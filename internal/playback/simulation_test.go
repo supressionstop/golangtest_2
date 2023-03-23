@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestSimulatePlayback_WholeDurationV2(t *testing.T) {
+func TestSimulatePlayback_WholeDuration(t *testing.T) {
 	testCasesWholeDuration := []time.Duration{
 		time.Millisecond,
 		time.Millisecond * 2,
@@ -22,11 +22,11 @@ func TestSimulatePlayback_WholeDurationV2(t *testing.T) {
 		time.Second,
 	}
 	for _, testDuration := range testCasesWholeDuration {
-		testWholeDurationV2(t, testDuration)
+		testWholeDuration(t, testDuration)
 	}
 }
 
-func testWholeDurationV2(t *testing.T, testDuration time.Duration) {
+func testWholeDuration(t *testing.T, testDuration time.Duration) {
 	t.Helper()
 
 	t.Run(fmt.Sprintf("%q whole duration played precisely", testDuration), func(t *testing.T) {
@@ -51,7 +51,7 @@ func testWholeDurationV2(t *testing.T, testDuration time.Duration) {
 	})
 }
 
-func TestSimulatePlayback_InterruptionV2(t *testing.T) {
+func TestSimulatePlayback_Interruption(t *testing.T) {
 	testCasesInterruption := []struct {
 		duration  time.Duration
 		stopAfter time.Duration
@@ -61,11 +61,11 @@ func TestSimulatePlayback_InterruptionV2(t *testing.T) {
 	}
 	for _, tc := range testCasesInterruption {
 		tca := tc
-		testInterruptionV2(t, tca.duration, tca.stopAfter)
+		testInterruption(t, tca.duration, tca.stopAfter)
 	}
 }
 
-func testInterruptionV2(t *testing.T, testDuration, stopAfter time.Duration) {
+func testInterruption(t *testing.T, testDuration, stopAfter time.Duration) {
 	t.Helper()
 
 	t.Run(fmt.Sprintf("duration %s interrupted after %s works", testDuration, stopAfter), func(t *testing.T) {

@@ -36,7 +36,7 @@ func NewSimulation(ctx context.Context) *Simulation {
 		interruptC: make(chan struct{}),
 	}
 
-	pl.stoppedAt, pl.finished = playback.SimPbV2(pl.changerC, pl.interruptC)
+	pl.stoppedAt, pl.finished = playback.SimulatePlayback(pl.changerC, pl.interruptC)
 	go pl.watchForFinish()
 
 	return pl
